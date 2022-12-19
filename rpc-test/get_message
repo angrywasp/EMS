@@ -1,0 +1,19 @@
+#!/bin/bash
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source ${dir}/_common
+
+key=$1
+request='{"key":"'${key}'"}'
+
+send_request get_message ${request}
+print_request_data
+
+echo ""
+print_response_data
+
+echo ""
+echo "==========================================="
+echo "Decoded Message"
+echo "-------------------------------------------"
+# extract the base64 message, trim the quotes and decode
+echo $(jq '.response.message' <<< "${RPC_RESPONSE}" | tr -d '"' | base64 --decode )

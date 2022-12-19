@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-debug",
+            "type": "shell",
+            "command": "dotnet",
+            "args": [
+                "build",
+                "-c",
+                "Debug",
+                "/p:NoWarn=CS1998",
+                "${workspaceRoot}/Src/EMS.sln"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}

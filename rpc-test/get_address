@@ -1,0 +1,12 @@
+#!/bin/bash
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source ${dir}/_common
+
+# Call with private data
+request='{"private":true}'
+
+send_request get_address ${request}
+print_request_data
+
+echo ""
+print_response_data

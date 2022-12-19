@@ -1,0 +1,9 @@
+#!/bin/bash
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source ${dir}/_common
+
+send_request get_message_count
+print_request_data
+
+echo ""
+print_response_data

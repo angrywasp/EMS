@@ -1,0 +1,57 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug-3500",
+            "type": "coreclr",
+            "request": "launch",
+            "windows": {
+                "program": "${workspaceRoot}/Bin/Binaries/EMS.exe",
+            },
+            "osx": {
+                "program": "${workspaceRoot}/Bin/Binaries/EMS",
+            },
+            "linux": {
+                "program": "${workspaceRoot}/Bin/Binaries/EMS",
+            },
+            "cwd": "${workspaceRoot}/Bin/Binaries",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "preLaunchTask": "build-debug",
+            "args":[
+                "--config-file", "3500.config",
+                "--p2p-port", "3500", 
+                "--rpc-port", "4500",
+                "--keyring", "3500",
+                "--net-id", "1145393744",
+                "--seed-dns", "angrywasp.net.au"
+            ]
+        },
+        {
+            "name": "Debug-3501",
+            "type": "coreclr",
+            "request": "launch",
+            "windows": {
+                "program": "${workspaceRoot}/Bin/Binaries/EMS.exe",
+            },
+            "osx": {
+                "program": "${workspaceRoot}/Bin/Binaries/EMS",
+            },
+            "linux": {
+                "program": "${workspaceRoot}/Bin/Binaries/EMS",
+            },
+            "cwd": "${workspaceRoot}/Bin/Binaries",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "preLaunchTask": "build-debug",
+            "args":[
+                "--config-file", "3501.config",
+                "--p2p-port", "3501", 
+                "--rpc-port", "4501",
+                "--keyring", "3501",
+                "--net-id", "1145393744",
+                "--seed-dns", "angrywasp.net.au"
+            ]
+        }
+    ]
+}

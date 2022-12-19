@@ -1,0 +1,60 @@
+#!/bin/bash
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+export IP=127.0.0.1
+export PORT=4500
+
+function send_request()
+{
+    data=""
+
+    if (( $# == 0 )); then
+        echo "Malformed request. Expected minimum of 1 argument"
+        exit
+    elif (( $# == 1 )); then
+        data=$(curl -s -w " %{http_code}" -X GET http://${IP}:${PORT}/$1 \
+            -d '{"api":{"major":1,"minor":0}}' \
+            -H 'Content-Type: application/json')
+    elif (( $# == 2 )); then
+        data=$(curl -s -w " %{http_code}" -X GET http://${IP}:${PORT}/$1 \
+            -d '{"api":{"major":1,"minor":0},"data":'$2'}' \
+            -H 'Content-Type: application/json')
+    else 
+        echo "Malformed request. Expected maximum 2 arguments"
+        exit
+    fi
+
+    # The response is formatted as the data and then the status code as a number at the end
+    # We split the data at the last space to get the data and status code in seperate variables
+    formattedData=$(echo "${data[@]}" | rev | cut -d" " -f2- | rev)
+    statusCode=$(echo "${data[@]}" | rev | cut -d" " -f1 | rev)
+
+    RPC_RESPONSE=${formattedData}
+    RPC_STATUS_CODE=${statusCode}
+}
+
+function print_request_data()
+{
+    req='{"api":{"major":1,"minor":0}}'
+
+    if (( $# == 1 )); then
+        req='{"api":{"major":1,"minor":0},"data":'$1'}'
+    fi
+
+    echo "==========================================="
+    echo "Request"
+    echo "-------------------------------------------"
+    echo ${req} | jq .
+}
+
+function print_response_data
+{
+    echo "==========================================="
+    if [ "${RPC_STATUS_CODE}" == 200 ]; then
+        echo "Response: Success"
+    else
+        echo "Response: Error Status ${RPC_STATUS_CODE}"
+    fi
+    echo "-------------------------------------------"
+    echo ${RPC_RESPONSE} | jq .
+}

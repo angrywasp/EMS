@@ -1,0 +1,8 @@
+Bin
+Src/*/obj
+*.log
+*.config
+*.keys
+TestData
+
+.DS_Store

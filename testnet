@@ -1,0 +1,26 @@
+#!/bin/bash
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+bin_file=${dir}/Bin/Debug/EMS
+
+function seed()
+{
+    ${bin_file} --seed-node --p2p-port 3500 --rpc-port 4500
+}
+
+function n1()
+{
+    ${bin_file} --p2p-port 3501 --rpc-port 4501
+}
+
+function n2()
+{
+    ${bin_file} --p2p-port 3502 --rpc-port 4502
+}
+
+function n3()
+{
+    ${bin_file} --p2p-port 3503 --rpc-port 4503
+}
+
+$1
