@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../../External/AngryWasp.Tools.MonoRepo/AngryWasp.Build/AngryWasp.Build.Application.targets"/>
+    <Import Project="../../External/AngryWasp.Build/AngryWasp.Build.Application.targets" />
     <ItemGroup>
-        <PackageReference Include="DnsClient" Version="*"/>
-        <PackageReference Include="System.Net.Sockets" Version="*"/>
-        <PackageReference Include="Newtonsoft.Json" Version="*"/>
-    </ItemGroup>
-    <ItemGroup>
-        <ProjectReference Include="../../External/AngryWasp.Tools.MonoRepo/AngryWasp.Cli/AngryWasp.Cli.csproj"/>
-        <ProjectReference Include="../../External/AngryWasp.Tools.MonoRepo/AngryWasp.Cryptography/AngryWasp.Cryptography.csproj"/>
-        <ProjectReference Include="../../External/AngryWasp.Tools.MonoRepo/AngryWasp.Json.Rpc/AngryWasp.Json.Rpc.csproj"/>
-        <ProjectReference Include="../../External/AngryWasp.Tools.MonoRepo/AngryWasp.Net/AngryWasp.Net.csproj"/>
-        <ProjectReference Include="../../External/AngryWasp.Tools.MonoRepo/AngryWasp.Serializer/AngryWasp.Serializer.csproj"/>
+        <PackageReference Include="DnsClient" Version="1.7.0" />
+        <PackageReference Include="System.Net.Sockets" Version="4.3.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+        <PackageReference Include="AngryWasp.Cli" Version="3.0.2" />
+        <PackageReference Include="AngryWasp.Cryptography" Version="3.0.2" />
+        <PackageReference Include="AngryWasp.Helpers" Version="3.0.4" />
+        <PackageReference Include="AngryWasp.Json.Rpc" Version="3.0.1" />
+        <PackageReference Include="AngryWasp.Logger" Version="3.0.1" />
+        <PackageReference Include="AngryWasp.Net" Version="3.0.2" />
+        <PackageReference Include="AngryWasp.Serializer" Version="3.0.1" />
     </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@ using AngryWasp.Cli.Args;
 using AngryWasp.Cli.DefaultCommands;
 using AngryWasp.Json.Rpc;
 using AngryWasp.Logger;
+using AngryWasp.Cli.Config;
 
 namespace EMS
 {
@@ -22,7 +23,11 @@ namespace EMS
             Console.Title = $"EMS {Version.VERSION}: {Version.CODE_NAME}";
             Serializer.Initialize();
             Config.Initialize(args.GetString("config-file", Path.Combine(Config.DEFAULT_DATA_DIR, Config.DEFAULT_CONFIG_FILE_NAME)));
-            if (!ConfigMapper.Process(args))
+            if (!ConfigMapper<UserConfig>.Process(args, Config.User, new string[,]
+            {
+                {"password", "Key file password. Omit to be prompted for a password"},
+                {"config-file", "Path to an existing config file to load"}
+            }))
                 return;
 
             string name = null;
