@@ -1,3 +1,4 @@
+using AngryWasp.Cryptography;
 using AngryWasp.Helpers;
 using AngryWasp.Logger;
 using AngryWasp.Net;

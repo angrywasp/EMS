@@ -1,3 +1,5 @@
+using AngryWasp.Helpers;
+
 namespace EMS
 {
     public class AddressBookKey

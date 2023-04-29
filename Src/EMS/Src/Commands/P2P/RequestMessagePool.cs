@@ -1,5 +1,7 @@
+using AngryWasp.Cryptography;
 using AngryWasp.Helpers;
 using AngryWasp.Logger;
+using AngryWasp.Math;
 using AngryWasp.Net;
 using System.Collections.Generic;
 using System.IO;
@@ -88,10 +90,10 @@ namespace EMS.Commands.P2P
                     // Can use their local data to validate the nonce
 
                     if (sendPruned)
-                        entry = entry.Join(BitShifter.ToByte((ushort)0));
+                        entry = entry.Join(((ushort)0).ToByte());
                     else
                         entry = entry
-                            .Join(BitShifter.ToByte((ushort)m.Value.Data.Length))
+                            .Join(((ushort)m.Value.Data.Length).ToByte())
                             .Join(m.Value.Data);
 
                     // Adding this entry would place the message length above the maximum
@@ -145,7 +147,7 @@ namespace EMS.Commands.P2P
                         HashKey16 messageKey = reader.ReadBytes(16);
                         HashKey16 readProofNonce = reader.ReadBytes(16);
 
-                        ushort messageLength = BitShifter.ToUShort(reader.ReadBytes(2));
+                        ushort messageLength = reader.ReadBytes(2).ToUShort();
                         byte[] messageBody = null;
 
                         if (messageLength > 0)

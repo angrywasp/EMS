@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AngryWasp.Cli;
+using AngryWasp.Cryptography;
 using AngryWasp.Logger;
 using AngryWasp.Net;
 

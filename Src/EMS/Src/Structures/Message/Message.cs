@@ -3,8 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using AngryWasp.Cli.Prompts;
+using AngryWasp.Cryptography;
 using AngryWasp.Helpers;
 using AngryWasp.Logger;
+using AngryWasp.Random;
 
 namespace EMS
 {
@@ -135,7 +137,7 @@ namespace EMS
                             string path = null;
                             while (true)
                             {
-                                path = Path.Combine(Config.User.DataDir, $"{AngryWasp.Helpers.StringHelper.GenerateRandomString(16)}.contact");
+                                path = Path.Combine(Config.User.DataDir, $"{RandomString.AlphaNumeric(16)}.contact");
 
                                 if (!File.Exists(path))
                                     break;

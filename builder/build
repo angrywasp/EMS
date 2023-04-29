@@ -17,7 +17,7 @@ function publish()
     cd ${ROOT_DIR}
     echo Building $1
     dotnet restore -r $1
-    dotnet publish -c release -r $1 -f net5.0 -p:Version=${APP_VERSION}
+    dotnet publish -c release -r $1 -f net7.0 -p:Version=${APP_VERSION}
 
     cd ${ROOT_DIR}/Bin/Release/net5.0/$1/publish
     zip ${ROOT_DIR}/Bin/ems-v${APP_VERSION}_$1.zip ./*

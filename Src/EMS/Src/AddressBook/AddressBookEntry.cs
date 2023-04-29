@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using AngryWasp.Cryptography;
-using AngryWasp.Helpers;
+using AngryWasp.Random;
 
 namespace EMS
 {

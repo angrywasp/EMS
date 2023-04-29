@@ -7,9 +7,10 @@ using System.Diagnostics;
 using System;
 using AngryWasp.Cryptography;
 using System.IO;
-using AngryWasp.Cli;
+using AngryWasp.Random;
 using AngryWasp.Logger;
 using System.Threading.Tasks;
+using AngryWasp.Math;
 
 namespace EMS
 {

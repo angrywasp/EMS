@@ -6,7 +6,9 @@ using System.Linq;
 using AngryWasp.Cli;
 using System.Collections.Generic;
 using AngryWasp.Logger;
+using AngryWasp.Random;
 using AngryWasp.Cli.Prompts;
+using AngryWasp.Math;
 
 namespace EMS
 {
@@ -72,8 +74,7 @@ namespace EMS
             List<Key> tempRing = new List<Key>();
             for (int i = 0; i < count; i++)
             {
-                byte[] pubKey, priKey;
-                Ecc.GenerateKeyPair(out pubKey, out priKey);
+                var (pubKey, priKey) = Ecc.GenerateKeyPair();
                 tempRing.Add(Key.Create(pubKey, priKey));
             }
 
@@ -165,8 +166,8 @@ namespace EMS
             BinaryReader reader = new BinaryReader(new MemoryStream(inputData));
             reader.BaseStream.Seek(0, SeekOrigin.Begin);
 
-            ushort signatureLength = BitShifter.ToUShort(reader.ReadBytes(2));
-            ushort encryptedMessageLength = BitShifter.ToUShort(reader.ReadBytes(2));
+            ushort signatureLength = reader.ReadBytes(2).ToUShort();
+            ushort encryptedMessageLength = reader.ReadBytes(2).ToUShort();
             BitArray xorKey = new BitArray(reader.ReadBytes(65));
             HashKey32 readProofHash = reader.ReadBytes(32);
             byte[] xorResult = new byte[65];

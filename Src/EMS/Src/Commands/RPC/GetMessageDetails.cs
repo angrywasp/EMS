@@ -1,3 +1,4 @@
+using AngryWasp.Cryptography;
 using AngryWasp.Json.Rpc;
 using Newtonsoft.Json;
 using System;

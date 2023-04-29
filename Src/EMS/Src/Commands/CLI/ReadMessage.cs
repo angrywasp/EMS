@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using AngryWasp.Cli;
+using AngryWasp.Cryptography;
 using AngryWasp.Helpers;
 using AngryWasp.Logger;
 
